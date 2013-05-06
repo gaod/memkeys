@@ -1,5 +1,6 @@
 #include <string>
 #include <ctime>
+#include <cstdio>
 
 extern "C" {
 #include <sys/time.h>
@@ -142,7 +143,7 @@ string Record::getTimestamp() const
   strftime(buffer, 80, "%Y%m%d-%H:%M:%S", timeinfo);
 
   char result[100] = {0};
-  std::snprintf(result, 100, "%s.%03ld", buffer, (long)tv.tv_usec / 1000);
+  snprintf(result, 100, "%s.%03ld", buffer, (long)tv.tv_usec / 1000);
   return result;
 }
 
