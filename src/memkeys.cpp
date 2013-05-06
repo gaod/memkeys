@@ -1,6 +1,7 @@
 #include <cstring>
 #include <string>
 #include <stdexcept>
+#include <sstream>
 
 #include "cli.h"
 #include "memkeys.h"
@@ -75,7 +76,9 @@ void Memkeys::run()
   signal(SIGINT, signal_cb);
   state.setState(state_STARTING);
   session->open();
-  logger->debug("My address: " + to_string((llsi_t)session->getIpAddress()));
+  stringstream strstream;
+  strstream << (llsi_t)session->getIpAddress();
+  logger->debug("My address: " + strstream.str());
   session->setFilter(string("tcp port ") + config->getPortAsString());
   try {
     state.setState(state_RUNNING);
