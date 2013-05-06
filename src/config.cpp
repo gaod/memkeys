@@ -1,6 +1,7 @@
 #include "common.h"
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 namespace mckeys {
 
@@ -81,7 +82,9 @@ uint16_t Config::getPort() const
 }
 string Config::getPortAsString() const
 {
-  return to_string((llui_t)getPort());
+  stringstream strstream;
+  strstream << (llui_t)getPort();
+  return strstream.str();
 }
 
 /**
