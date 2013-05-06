@@ -14,7 +14,7 @@ AC_LANG([C++])
 
 # Checks for programs
 CXXFLAGS="$CXXFLAGS -std=c++0x" # Will fail if not g++44 or later
-AC_PROG_CXX([g++44 g++ gcc cxx cc++ c++])
+AC_PROG_CXX([g++46 g++ gcc cxx cc++ c++])
 AC_PROG_CXXCPP
 CXXCPP="$CXXCPP -std=c++0x" # This must come after AC_PROG_CXXCPP
 AC_PROG_LIBTOOL
