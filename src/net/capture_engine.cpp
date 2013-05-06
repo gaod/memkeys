@@ -3,6 +3,7 @@
 #include "report/report.h"
 #include "report/curses.h"
 
+#include <sstream>
 #include <vector>
 
 namespace mckeys {
@@ -130,10 +131,14 @@ void CaptureEngine::processPackets(int worker_id, mqueue<Packet>* work_queue) {
         string out = getStatsString();
         uint64_t now = UtilTime::currentTimeMillis();
         llui_t tdiff = now - packet.timestamp();
+        stringstream strstream;
+        strstream << resCount;
         out.append(", memcache replies = ");
-        out.append(to_string(resCount));
+        out.append(strstream.str());
+        strstream.clear();
         out.append(", time diff = ");
-        out.append(to_string(tdiff));
+        strstream << tdiff;
+        out.append(strstream.str());
         logger->debug(out);
       }
     } else {
